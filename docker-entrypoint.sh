@@ -2,6 +2,9 @@
 
 export LW_ACCOUNT_NAME=${INPUT_LW_ACCOUNT_NAME}
 export LW_ACCESS_TOKEN=${INPUT_LW_ACCESS_TOKEN}
+export INPUT_DOCKER_PASSWORD=${INPUET_DOCKER_PASSWORD}
+export INPUT_DOCKER_USERNAME=${INPUET_DOCKER_USERNAME}
+export INPUT_DOCKER_SERVER=${INPUET_DOCKER_SERVER}
 
 # Disable update prompt for lw-scanner if newer version is available unless explicitly set
 export LW_SCANNER_DISABLE_UPDATES=${LW_SCANNER_DISABLE_UPDATES:-true}
@@ -28,7 +31,7 @@ fi
 rm ${GITHUB_WORKSPACE}/evaluations/${INPUT_IMAGE_NAME}/${INPUT_IMAGE_TAG}/evaluation_*.json &>/dev/null || true
 
 # Run scanner
-/usr/local/bin/lw-scanner image evaluate ${INPUT_IMAGE_NAME} ${INPUT_IMAGE_TAG} --build-plan ${GITHUB_REPOSITORY} --build-id ${GITHUB_RUN_ID} --data-directory ${GITHUB_WORKSPACE} ${SCANNER_PARAMETERS} --docker-server ${INPUT_DOCKER_REGISTRY} --docker-username ${INPUT_DOCKER_USERNAME} --docker-password ${INPUT_DOCKER_PASSWORD}
+/usr/local/bin/lw-scanner image evaluate ${INPUT_IMAGE_NAME} ${INPUT_IMAGE_TAG} --build-plan ${GITHUB_REPOSITORY} --build-id ${GITHUB_RUN_ID} --data-directory ${GITHUB_WORKSPACE} ${SCANNER_PARAMETERS} --docker-server ${DOCKER_SERVER} --docker-username ${DOCKER_USERNAME} --docker-password ${DOCKER_PASSWORD}
 export LW_SCANNER_EXIT_CODE=$?
 
 # Exit if check is failed and policy feature not used
