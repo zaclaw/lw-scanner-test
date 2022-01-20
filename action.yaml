@@ -66,9 +66,9 @@ runs:
     - ${{ inputs.FAIL_BUILD }}
     - ${{ inputs.SEVERITY_THRESHOLD }}
     - ${{ inputs.USE_POLICY }}
-    - ${{ inputs.DOCKER_USERNAME }}
-    - ${{ inputs.DOCKER_PASSWORD }}
-    - ${{ inputs.DOCKER_SERVER }}
+    - ${{ inputs.INPUT_DOCKER_USERNAME }}
+    - ${{ inputs.INPUT_DOCKER_PASSWORD }}
+    - ${{ inputs.INPUT_DOCKER_SERVER }}
 branding:
   icon: "alert-triangle"
   color: "blue"
